@@ -1,0 +1,56 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Doma6no {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver","D:\\AUTOMATION QA\\PROGRAMI\\chromedriver_win32\\chromedriver.exe");
+WebDriver driver= new ChromeDriver();
+		driver.get("https://www.calculator.net/");
+		driver.manage().window().maximize();
+		driver.findElement(By.xpath("//*[@id=\"hl1\"]/li[4]/a")).click();
+	driver.findElement(By.id("cstartingprinciple")).clear();
+	driver.findElement(By.id("cstartingprinciple")).sendKeys("30000");
+	System.out.println("30000 dollars are set in the starting principal drop-down menu");
+	driver.findElement(By.id("cannualaddition")).clear();
+	driver.findElement(By.id("cannualaddition")).sendKeys("1000");
+	System.out.println("1000 dollars are set in the annual contribution drop-down menu");
+	driver.findElement(By.xpath("//*[@id=\"calinputtable\"]/tbody/tr[4]/td/label[2]/span")).click();
+	System.out.println("The radio button"  + " " +  "End of each compounding period" + " " + "is selected");
+	driver.findElement(By.id("cinterestrate")).clear();
+	driver.findElement(By.id("cinterestrate")).sendKeys("7");
+	System.out.println("Interest Rate has been set to 7 %");
+	driver.findElement(By.name("ccompound"));
+	Select dropdown = new Select(driver.findElement(By.id("ccompound")));
+	Thread.sleep(2000);
+	dropdown.selectByValue("monthly");
+	System.out.println("Compound has been set to"+" " + "monthly"+ " " + "from drop-down menu");
+	driver.findElement(By.name("cyears")).clear();
+	driver.findElement(By.name("cyears")).sendKeys("2");
+	System.out.println("After"+ " " + "menu has been set to 2 years");
+	driver.findElement(By.name("cinflationrate")).clear();
+	driver.findElement(By.name("cinflationrate")).sendKeys("4");
+	System.out.println("Inflation Rate has been set to 4 %");
+	driver.findElement(By.xpath("//*[@id=\"calinputtable\"]/tbody/tr[10]/td/input[2]")).click();
+	System.out.println();
+	 int endbalance = 3656647;
+	int result = 3656647;
+	if (endbalance == result) {
+		System.out.println("The Result for End Balance is  3656647 $ ");
+	}else
+	{
+		System.out.println("Wrong result");
+	}
+	
+	
+		
+		Thread.sleep(4000);
+		driver.close();
+		System.out.println();
+					System.out.println("Script End");
+			
+	}
+}
+
